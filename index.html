@@ -13,42 +13,31 @@
         crossorigin="anonymous">
         <style>
             body {
-                font-family: Arial, sans-serif;
                 background-color: #007bff;
                 color: #ffffff;
+                font-family: Arial, sans-serif;
                 margin: 0;
                 display: flex;
                 align-items: center;
                 justify-content: center;
                 min-height: 100vh;
             }
-        
+    
             .container {
-                position: relative;
-                text-align: left;
-                padding: 20px;
                 background-color: #ffffff;
                 border-radius: 8px;
                 box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                padding: 20px;
+                margin-top: 20px;
                 width: 80%;
                 display: flex;
                 flex-direction: column;
             }
-        
+    
             h1, h2 {
                 color: #007bff;
             }
-        
-            .logo-container {
-                margin-top: 20px;
-                align-self: flex-end;
-            }
-        
-            .logo {
-                width: 100px;
-                height: auto;
-            }
-        
+    
             button {
                 background-color: #0056b3;
                 color: #ffffff;
@@ -59,16 +48,30 @@
                 margin-top: 20px;
                 font-size: 16px;
             }
-        
+    
             button:hover {
                 background-color: #004080;
             }
-        
+    
             #fechaActual {
                 margin-top: 10px;
                 color: #007bff;
             }
-        
+    
+            .form-group {
+                margin-top: 10px;
+            }
+    
+            .logo-container {
+                margin-top: 20px;
+                align-self: flex-end;
+            }
+    
+            .logo {
+                width: 100px;
+                height: auto;
+            }
+    
             /* Estilos para las tablas */
             table {
                 width: 100%;
@@ -77,47 +80,47 @@
                 border-radius: 8px;
                 overflow: hidden;
             }
-        
+    
             table, th, td {
                 border: 1px solid #007bff;
             }
-        
+    
             th, td {
                 padding: 12px;
                 text-align: left;
             }
-        
+    
             th {
                 background-color: #007bff;
                 color: #ffffff;
             }
-        
+    
             .negro-texto {
                 color: #000000 !important;
             }
-        
+    
             /* Estilos específicos para la quinta tabla */
             #tabla5 th:nth-child(3) {
                 width: 30%;
             }
-        
+    
             /* Estilos para la fecha */
             #fechaActual {
                 margin-top: 10px;
             }
-        
+    
             /* Estilos para los nuevos campos */
             .form-group {
                 margin-top: 10px;
                 display: flex;
-                flex-direction: column; /* Cambiado a columna en pantallas más pequeñas */
+                flex-direction: column;
             }
-        
+    
             .form-group label {
                 margin-bottom: 5px;
-                text-align: left; /* Alineado a la izquierda en pantallas más pequeñas */
+                text-align: left;
             }
-        
+    
             .form-group input {
                 width: 100%;
             }
