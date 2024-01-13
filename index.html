@@ -125,11 +125,22 @@
                 width: 100%;
             }
     
-            @media (max-width: 768px) {
-                .container {
-                    width: 90%;
-                }
-            }
+            @media screen and (max-width: 600px) {
+    /* Estilos específicos para pantallas más pequeñas */
+    .container {
+        width: 100%; /* Haz que el contenedor ocupe el 100% del ancho */
+    }
+    
+    .form-group label {
+        width: 100%; /* Ajusta según el ancho deseado para la etiqueta en pantallas más pequeñas */
+        text-align: left; /* Alineado a la izquierda en pantallas más pequeñas */
+        margin-bottom: 5px;
+    }
+
+    .form-group input {
+        width: 100%; /* Ajusta según el ancho deseado para el campo de entrada en pantallas más pequeñas */
+    }
+}
         </style>
         
 </head>
