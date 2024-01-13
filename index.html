@@ -11,117 +11,118 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZwTl"
         crossorigin="anonymous">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #007bff; /* Color de fondo principal */
-            color: #ffffff; /* Color del texto */
-            margin: 0;
-            display: flex;
-            align-items: center; /* Alinea los elementos verticalmente al centro */
-            justify-content: center; /* Alinea los elementos horizontalmente al centro */
-            min-height: 100vh;
-        }
-
-        .container {
-            position: relative;
-            text-align: left; /* Alinea el texto a la izquierda */
-            padding: 20px;
-            background-color: #ffffff; /* Color de fondo del contenedor */
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra ligera */
-            width: 80%; /* Ajusta según el ancho deseado del contenedor */
-            display: flex;
-            flex-direction: column; /* Organiza los elementos en columna */
-        }
-
-        h1, h2 {
-            color: #007bff; /* Color del título */
-        }
-
-        .logo-container {
-            margin-top: 20px; /* Ajusta según el espacio deseado */
-            align-self: flex-end; /* Alinea el contenedor del logo a la derecha */
-        }
-
-        .logo {
-            width: 100px; /* Ajusta según el tamaño deseado */
-            height: auto;
-        }
-
-        button {
-            background-color: #0056b3; /* Color del botón */
-            color: #ffffff; /* Color del texto del botón */
-            padding: 10px 20px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            margin-top: 20px;
-            font-size: 16px;
-        }
-
-        button:hover {
-            background-color: #004080; /* Color del botón al pasar el mouse */
-        }
-        #fechaActual {
-            margin-top: 10px;
-            color: #007bff; /* Color del texto de la fecha */
-        }
-        /* Estilos para las tablas */
-        table {
-            width: 100%;
-            margin-top: 20px;
-            border-collapse: collapse;
-            border-radius: 8px;
-            overflow: hidden;
-        }
-
-        table, th, td {
-            border: 1px solid #007bff; /* Borde de las celdas */
-        }
-
-        th, td {
-            padding: 12px;
-            text-align: left;
-        }
-
-        th {
-            background-color: #007bff;
-            color: #ffffff;
-        }
-   
-        .negro-texto {
-        color: #000000 !important; /* Color negro */
-    }
- 
-        /* Estilos específicos para la quinta tabla */
-        #tabla5 th:nth-child(3) {
-            width: 30%; /* Ajusta según el ancho deseado para la columna 3 de la tabla 5 */
-        }
-
-        /* Estilos para la fecha */
-        #fechaActual {
-            margin-top: 10px;
-        }
-
-        /* Estilos para los nuevos campos */
-        .form-group {
-            margin-top: 10px;
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-        }
-
-        .form-group label {
-            width: 45%; /* Ajusta según el ancho deseado para la etiqueta */
-            margin-right: 5%;
-            text-align: right;
-        }
-
-        .form-group input {
-            width: 50%; /* Ajusta según el ancho deseado para el campo de entrada */
-        }
-    </style>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                background-color: #007bff;
+                color: #ffffff;
+                margin: 0;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                min-height: 100vh;
+            }
+        
+            .container {
+                position: relative;
+                text-align: left;
+                padding: 20px;
+                background-color: #ffffff;
+                border-radius: 8px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                width: 80%;
+                display: flex;
+                flex-direction: column;
+            }
+        
+            h1, h2 {
+                color: #007bff;
+            }
+        
+            .logo-container {
+                margin-top: 20px;
+                align-self: flex-end;
+            }
+        
+            .logo {
+                width: 100px;
+                height: auto;
+            }
+        
+            button {
+                background-color: #0056b3;
+                color: #ffffff;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                margin-top: 20px;
+                font-size: 16px;
+            }
+        
+            button:hover {
+                background-color: #004080;
+            }
+        
+            #fechaActual {
+                margin-top: 10px;
+                color: #007bff;
+            }
+        
+            /* Estilos para las tablas */
+            table {
+                width: 100%;
+                margin-top: 20px;
+                border-collapse: collapse;
+                border-radius: 8px;
+                overflow: hidden;
+            }
+        
+            table, th, td {
+                border: 1px solid #007bff;
+            }
+        
+            th, td {
+                padding: 12px;
+                text-align: left;
+            }
+        
+            th {
+                background-color: #007bff;
+                color: #ffffff;
+            }
+        
+            .negro-texto {
+                color: #000000 !important;
+            }
+        
+            /* Estilos específicos para la quinta tabla */
+            #tabla5 th:nth-child(3) {
+                width: 30%;
+            }
+        
+            /* Estilos para la fecha */
+            #fechaActual {
+                margin-top: 10px;
+            }
+        
+            /* Estilos para los nuevos campos */
+            .form-group {
+                margin-top: 10px;
+                display: flex;
+                flex-direction: column; /* Cambiado a columna en pantallas más pequeñas */
+            }
+        
+            .form-group label {
+                margin-bottom: 5px;
+                text-align: left; /* Alineado a la izquierda en pantallas más pequeñas */
+            }
+        
+            .form-group input {
+                width: 100%;
+            }
+        </style>
+        
 </head>
 
 <body>
