@@ -1,52 +1,173 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulario de Rendición diaria</title>
+    <title>Formulario de Rendición</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZwTl"
+        crossorigin="anonymous">
     <style>
         body {
             font-family: Arial, sans-serif;
-            margin: 20px;
+            background-color: #007bff; /* Color de fondo principal */
+            color: #ffffff; /* Color del texto */
+            margin: 0;
+            display: flex;
+            align-items: center; /* Alinea los elementos verticalmente al centro */
+            justify-content: center; /* Alinea los elementos horizontalmente al centro */
+            min-height: 100vh;
         }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 15px;
+
+        .container {
+            position: relative;
+            text-align: left; /* Alinea el texto a la izquierda */
+            padding: 20px;
+            background-color: #ffffff; /* Color de fondo del contenedor */
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+            width: 80%; /* Ajusta según el ancho deseado del contenedor */
+            display: flex;
+            flex-direction: column; /* Organiza los elementos en columna */
         }
-        th, td {
-            padding: 8px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-            width: 25%; /* Establece el ancho deseado para las celdas */
+
+        h1, h2 {
+            color: #007bff; /* Color del título */
         }
+
+        .logo-container {
+            margin-top: 20px; /* Ajusta según el espacio deseado */
+            align-self: flex-end; /* Alinea el contenedor del logo a la derecha */
+        }
+
+        .logo {
+            width: 100px; /* Ajusta según el tamaño deseado */
+            height: auto;
+        }
+
         button {
-            background-color: #4CAF50;
-            color: white;
-            padding: 10px 15px;
+            background-color: #0056b3; /* Color del botón */
+            color: #ffffff; /* Color del texto del botón */
+            padding: 10px 20px;
             border: none;
             border-radius: 4px;
             cursor: pointer;
-            margin-bottom: 20px;
+            margin-top: 20px;
+            font-size: 16px;
         }
+
         button:hover {
-            background-color: #45a049;
+            background-color: #004080; /* Color del botón al pasar el mouse */
+        }
+        #fechaActual {
+            margin-top: 10px;
+            color: #007bff; /* Color del texto de la fecha */
+        }
+        /* Estilos para las tablas */
+        table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        table, th, td {
+            border: 1px solid #007bff; /* Borde de las celdas */
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #007bff;
+            color: #ffffff;
+        }
+   
+        .negro-texto {
+        color: #000000 !important; /* Color negro */
+    }
+ 
+        /* Estilos específicos para la quinta tabla */
+        #tabla5 th:nth-child(3) {
+            width: 30%; /* Ajusta según el ancho deseado para la columna 3 de la tabla 5 */
+        }
+
+        /* Estilos para la fecha */
+        #fechaActual {
+            margin-top: 10px;
+        }
+
+        /* Estilos para los nuevos campos */
+        .form-group {
+            margin-top: 10px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+
+        .form-group label {
+            width: 45%; /* Ajusta según el ancho deseado para la etiqueta */
+            margin-right: 5%;
+            text-align: right;
+        }
+
+        .form-group input {
+            width: 50%; /* Ajusta según el ancho deseado para el campo de entrada */
         }
     </style>
 </head>
+
 <body>
-    <h2>LA YUNGERE S.A</h2>
-    <h2>Formulario de Rendición diaria</h2>
-    <p id="fechaActual"></p>
-    <form id="rendicionForm">
-        <!-- Primera tabla -->
-        <table id="tabla1">
+    <div class="container">
+        <div class="logo-container">
+            <img src="img/logo.jpg" alt="Logo" class="logo"> <!-- Ruta a tu logo -->
+        </div>
+
+        <h1>LA YUNGERE S.A</h1>
+        <h2>Formulario de Rendición diaria</h2>
+        <p id="fechaActual"></p>
+
+        <script>
+            // Función para obtener la fecha actual en formato dd/mm/yyyy
+            function getFormattedDate() {
+                const today = new Date();
+                const dd = String(today.getDate()).padStart(2, '0');
+                const mm = String(today.getMonth() + 1).padStart(2, '0'); // Enero es 0
+                const yyyy = today.getFullYear();
+                return dd + '/' + mm + '/' + yyyy;
+            }
+
+            // Mostrar la fecha actual en el elemento con id "fechaActual"
+            document.getElementById('fechaActual').innerHTML = 'Fecha: ' + getFormattedDate();
+        </script>
+
+        <!-- Nueva tabla para "Nombre y Apellido" y "Legajo" -->
+        <table>
             <tr>
-                <th>Punto de Venta</th>
-                <th>N° de Reporte Fiscal "Z"</th>
-                <th>Cantidad de Tickets</th>
-                <th>Promedio</th>
+                <th>Nombre y Apellido</th>
+                <th>Legajo</th>
             </tr>
+            <tr>
+                <td><input type="text" id="nombreApellido" name="nombreApellido" required></td>
+                <td><input type="number" id="legajo" name="legajo" required></td>
+            </tr>
+        </table>
+
+        <form id="rendicionForm">
+            <!-- Primera tabla -->
+            <table id="tabla1">
+                <tr>
+                    <th>Punto de Venta</th>
+                    <th>N° de Reporte Fiscal "Z"</th>
+                    <th>Cantidad de Tickets</th>
+                    <th>Promedio</th>
+                </tr>
+          
             <tr>
                 <td><input type="text" id="puntoVenta1" name="puntoVenta1"   required></td>
                 <td><input type="text" id="reporteFiscal1" name="reporteFiscal1"  required></td>
@@ -77,62 +198,64 @@
             </tr>
         </table>
                 <!-- Tercera tabla -->
-                <table id="tabla3">
-                    <tr>
-                        <!-- Se eliminó la columna "Tarjetas" -->
-                        <th>Tarjetas de Débito</th>
-                        <th>Cantidad</th>
-                        <th>Total</th>
-                    </tr>
-                    <tr>
-                        <td>Visa Electron</td>
-                        <td><input type="number" id="cantidadVisaElectron" name="cantidadVisaElectron" required></td>
-                        <td><input type="number" id="totalVisaElectron" name="totalVisaElectron" required></td>
-                    </tr>
-                    <tr>
-                        <td>Maestro</td>
-                        <td><input type="number" id="cantidadMaestro" name="cantidadMaestro" required></td>
-                        <td><input type="number" id="totalMaestro" name="totalMaestro" required></td>
-                    </tr>
-                    <tr>
-                        <td>Mc Debit</td>
-                        <td><input type="number" id="cantidadMcDebit" name="cantidadMcDebit" required></td>
-                        <td><input type="number" id="totalMcDebit" name="totalMcDebit" required></td>
-                    </tr>
-                    <tr>
-                        <td>MODO</td>
-                        <td><input type="number" id="cantidadModo" name="cantidadModo" required></td>
-                        <td><input type="number" id="totalModo" name="totalModo" required></td>
-                    </tr>
-                </table>
-                <!-- Cuarta tabla -->
-                <table id="tabla4">
-                    <tr>
-                        <th>Tarjetas de Crédito</th>
-                        <th>Cantidad</th>
-                        <th>Total</th>
-                    </tr>
-                    <tr>
-                        <td>Visa Electron</td>
-                        <td><input type="number" id="cantidadVisaElectron" name="cantidadVisaElectron" required></td>
-                        <td><input type="number" id="totalVisaElectron" name="totalVisaElectron" required></td>
-                    </tr>
-                    <tr>
-                        <td>Maestro</td>
-                        <td><input type="number" id="cantidadMaestro" name="cantidadMaestro" required></td>
-                        <td><input type="number" id="totalMaestro" name="totalMaestro" required></td>
-                    </tr>
-                    <tr>
-                        <td>Mc Debit</td>
-                        <td><input type="number" id="cantidadMcDebit" name="cantidadMcDebit" required></td>
-                        <td><input type="number" id="totalMcDebit" name="totalMcDebit" required></td>
-                    </tr>
-                    <tr>
-                        <td>MODO</td>
-                        <td><input type="number" id="cantidadModo" name="cantidadModo" required></td>
-                        <td><input type="number" id="totalModo" name="totalModo" required></td>
-                    </tr>
-                </table>
+<table id="tabla3">
+    <tr>
+        <!-- Se eliminó la columna "Tarjetas" -->
+        <th>Tarjetas de Débito</th>
+        <th>Cantidad</th>
+        <th>Total</th>
+    </tr>
+    <tr>
+        <td class="negro-texto">Visa Electron</td>
+        <td><input type="number" id="cantidadVisaElectron3" name="cantidadVisaElectron3" required></td>
+        <td><input type="number" id="totalVisaElectron3" name="totalVisaElectron3" required></td>
+    </tr>
+    <tr>
+        <td class="negro-texto">Maestro</td>
+        <td><input type="number" id="cantidadMaestro3" name="cantidadMaestro3" required></td>
+        <td><input type="number" id="totalMaestro3" name="totalMaestro3" required></td>
+    </tr>
+    <tr>
+        <td class="negro-texto">Mc Debit</td>
+        <td><input type="number" id="cantidadMcDebit3" name="cantidadMcDebit3" required></td>
+        <td><input type="number" id="totalMcDebit3" name="totalMcDebit3" required></td>
+    </tr>
+    <tr>
+        <td class="negro-texto">MODO</td>
+        <td><input type="number" id="cantidadModo3" name="cantidadModo3" required></td>
+        <td><input type="number" id="totalModo3" name="totalModo3" required></td>
+    </tr>
+</table>
+
+<!-- Cuarta tabla -->
+<table id="tabla4">
+    <tr>
+        <th>Tarjetas de Crédito</th>
+        <th>Cantidad</th>
+        <th>Total</th>
+    </tr>
+    <tr>
+        <td class="negro-texto">Visa </td>
+        <td><input type="number" id="cantidadVisaElectron4" name="cantidadVisaElectron4" required></td>
+        <td><input type="number" id="totalVisaElectron4" name="totalVisaElectron4" required></td>
+    </tr>
+    <tr>
+        <td class="negro-texto">Mastercard</td>
+        <td><input type="number" id="cantidadMaestro4" name="cantidadMaestro4" required></td>
+        <td><input type="number" id="totalMaestro4" name="totalMaestro4" required></td>
+    </tr>
+    <tr>
+        <td class="negro-texto">Amex</td>
+        <td><input type="number" id="cantidadMcDebit4" name="cantidadMcDebit4" required></td>
+        <td><input type="number" id="totalMcDebit4" name="totalMcDebit4" required></td>
+    </tr>
+    <tr>
+        <td class="negro-texto">Cabal</td>
+        <td><input type="number" id="cantidadModo4" name="cantidadModo4" required></td>
+        <td><input type="number" id="totalModo4" name="totalModo4" required></td>
+    </tr>
+</table>
+
 <!-- Quinta tabla -->
 <table id="tabla5">
     <tr>
@@ -195,7 +318,7 @@
 
 <button type="button" onclick="realizarCalculos()">Realizar Cálculos</button>
 </form>
-
+</div>
 <script>
  
 
@@ -415,5 +538,18 @@ function final() {
         }
 
 </script>
+
+
+<!-- Bootstrap JS y Popper.js -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
 </body>
 </html>
