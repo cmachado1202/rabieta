@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Rendición diaria</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 15px;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+            width: 25%; /* Establece el ancho deseado para las celdas */
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h2>LA YUNGERE S.A</h2>
+    <h2>Formulario de Rendición diaria</h2>
+    <p id="fechaActual"></p>
+    <form id="rendicionForm">
+        <!-- Primera tabla -->
+        <table id="tabla1">
+            <tr>
+                <th>Punto de Venta</th>
+                <th>N° de Reporte Fiscal "Z"</th>
+                <th>Cantidad de Tickets</th>
+                <th>Promedio</th>
+            </tr>
+            <tr>
+                <td><input type="text" id="puntoVenta1" name="puntoVenta1"   required></td>
+                <td><input type="text" id="reporteFiscal1" name="reporteFiscal1"  required></td>
+                <td><input type="number" id="cantidadTickets1" name="cantidadTickets1"   required></td>
+                <td><input type="text" id="promedio1" name="promedio1" readonly></td>
+            </tr>
+            <tr>
+                <td><input type="text" id="puntoVenta2" name="puntoVenta2"  required></td>
+                <td><input type="text" id="reporteFiscal2" name="reporteFiscal2"  required></td>
+                <td><input type="number" id="cantidadTickets2" name="cantidadTickets2"  required></td>
+                <td><input type="text" id="promedio2" name="promedio2" readonly></td>
+            </tr>
+        </table>
+
+        <!-- Segunda tabla -->
+        <table id="tabla2">
+            <tr>
+                <th>Cantidad de Tickets Anulados</th>
+                <th>Total de Anulaciones</th>
+                <th>Cantidad de Notas de Crédito</th>
+                <th>Total de Notas de Crédito</th>
+            </tr>
+            <tr>
+                <td><input type="number" id="cantTicketsAnulados" name="cantTicketsAnulados"   required></td>
+                <td><input type="number" id="totalAnulaciones" name="totalAnulaciones"   required></td>
+                <td><input type="number" id="cantNotasCredito" name="cantNotasCredito"   required></td>
+                <td><input type="number" id="totalNotasCredito" name="totalNotasCredito"   required></td>
+            </tr>
+        </table>
+                <!-- Tercera tabla -->
+                <table id="tabla3">
+                    <tr>
+                        <!-- Se eliminó la columna "Tarjetas" -->
+                        <th>Tarjetas de Débito</th>
+                        <th>Cantidad</th>
+                        <th>Total</th>
+                    </tr>
+                    <tr>
+                        <td>Visa Electron</td>
+                        <td><input type="number" id="cantidadVisaElectron" name="cantidadVisaElectron" required></td>
+                        <td><input type="number" id="totalVisaElectron" name="totalVisaElectron" required></td>
+                    </tr>
+                    <tr>
+                        <td>Maestro</td>
+                        <td><input type="number" id="cantidadMaestro" name="cantidadMaestro" required></td>
+                        <td><input type="number" id="totalMaestro" name="totalMaestro" required></td>
+                    </tr>
+                    <tr>
+                        <td>Mc Debit</td>
+                        <td><input type="number" id="cantidadMcDebit" name="cantidadMcDebit" required></td>
+                        <td><input type="number" id="totalMcDebit" name="totalMcDebit" required></td>
+                    </tr>
+                    <tr>
+                        <td>MODO</td>
+                        <td><input type="number" id="cantidadModo" name="cantidadModo" required></td>
+                        <td><input type="number" id="totalModo" name="totalModo" required></td>
+                    </tr>
+                </table>
+                <!-- Cuarta tabla -->
+                <table id="tabla4">
+                    <tr>
+                        <th>Tarjetas de Crédito</th>
+                        <th>Cantidad</th>
+                        <th>Total</th>
+                    </tr>
+                    <tr>
+                        <td>Visa Electron</td>
+                        <td><input type="number" id="cantidadVisaElectron" name="cantidadVisaElectron" required></td>
+                        <td><input type="number" id="totalVisaElectron" name="totalVisaElectron" required></td>
+                    </tr>
+                    <tr>
+                        <td>Maestro</td>
+                        <td><input type="number" id="cantidadMaestro" name="cantidadMaestro" required></td>
+                        <td><input type="number" id="totalMaestro" name="totalMaestro" required></td>
+                    </tr>
+                    <tr>
+                        <td>Mc Debit</td>
+                        <td><input type="number" id="cantidadMcDebit" name="cantidadMcDebit" required></td>
+                        <td><input type="number" id="totalMcDebit" name="totalMcDebit" required></td>
+                    </tr>
+                    <tr>
+                        <td>MODO</td>
+                        <td><input type="number" id="cantidadModo" name="cantidadModo" required></td>
+                        <td><input type="number" id="totalModo" name="totalModo" required></td>
+                    </tr>
+                </table>
+<!-- Quinta tabla -->
+<table id="tabla5">
+    <tr>
+        <th>Gastos</th>
+        <th>Montos</th>
+        <th></th>
+        <th>TOTALES</th>
+    </tr>
+    <tr>
+        <td><input type="text" value=" " required></td>
+        <td><input type="number" id="monto1" name="monto1" required></td>
+        <td><input type="text" value="Mercadopago" readonly></td>
+        <td><input type="number" id="mercadopago" name="mercadopago" required></td>
+    </tr>
+    <tr>
+        <td><input type="text" value=" " required></td>
+        <td><input type="number" id="monto2" name="monto2" required></td>
+        <td><input type="text" value="Fudex" readonly></td>
+        <td><input type="number" id="fudex" name="fudex" required></td>
+    </tr>
+    <tr>
+        <td><input type="text" value=" " required></td>
+        <td><input type="number" id="monto3" name="monto3" required></td>
+        <td><input type="text" value="Gastos" readonly></td>
+        <td><input type="number" id="gastos" name="gastos" readonly></td>
+    </tr>
+    <tr>
+        <td><input type="text" value=" " required></td>
+        <td><input type="number" id="monto4" name="monto4"required></td>
+        <td><input type="text" value="Total tarjeta" readonly></td>
+        <td><input type="number" id="totalTarjeta" name="totalTarjeta" readonly></td>
+    </tr>
+    <tr>
+        <td><input type="text" value=" " required></td>
+        <td><input type="number" id="monto5" name="monto5" required></td>
+        <td><input type="text" value="Efectivo final" readonly></td>
+        <td><input type="number" id="efectivoFinal" name="efectivoFinal" required></td>
+    </tr>
+    <tr>
+        <td><input type="text" value=" " required></td>
+        <td><input type="number" id="monto6" name="monto6" required></td>
+        <td><input type="text" value="Total de rendición" readonly></td>
+        <td><input type="number" id="totalRendicion" name="totalRendicion" readonly></td>
+    </tr>
+    <tr>
+        <td><input type="text" value=" " required></td>
+        <td><input type="number" id="monto7" name="monto7" required></td>
+        <td><input type="text" value="Monto a Rendir" readonly></td>
+        <td><input type="number" id="montorendir" name="montorendir" readonly></td>
+    </tr>
+    <tr>
+        <td><input type="text" value=" " required></td>
+        <td><input type="number" id="monto8" name="monto8" required></td>
+        <td><input type="text" value= "Diferencia" readonly></td>
+        <td><input type="number" id="totales" name="totales" readonly></td>
+    </tr>
+</table>
+
+
+
+<button type="button" onclick="realizarCalculos()">Realizar Cálculos</button>
+</form>
+
+<script>
+ 
+
+    function calcularPromedio(tablaId, campoNombre) {
+        var tabla = document.getElementById(tablaId);
+
+        if (!tabla) {
+            console.error("La tabla con ID '" + tablaId + "' no se encontró.");
+            return;
+        }
+
+        var filas = tabla.querySelectorAll("tr");
+
+        if (filas.length < 3) {
+            console.error("La tabla debe tener al menos 3 filas para calcular el promedio.");
+            return;
+        }
+
+        for (var i = 1; i < filas.length; i++) {
+            var valorCelda2 = parseFloat(filas[i].querySelectorAll("td")[1].querySelector("input").value);
+            var valorCelda3 = parseFloat(filas[i].querySelectorAll("td")[2].querySelector("input").value);
+
+            if (!isNaN(valorCelda2) && !isNaN(valorCelda3) && valorCelda3 !== 0) {
+                var promedio = valorCelda2 / valorCelda3;
+                filas[i].querySelectorAll("td")[3].querySelector("input").value = promedio.toFixed(2);
+            }
+        }
+    }
+
+    function calcularSumaColumna4() {
+            var tabla3 = document.getElementById("tabla3");
+            var tabla4 = document.getElementById("tabla4");
+            var tabla5 = document.getElementById("tabla5");
+
+            if (!tabla3 || !tabla4 || !tabla5) {
+                console.error("Error: No se encontraron algunas de las tablas.");
+                return;
+            }
+
+            var filas3 = tabla3.querySelectorAll("tr");
+            var filas4 = tabla4.querySelectorAll("tr");
+
+            if (filas3.length < 2 || filas4.length < 2) {
+                console.error("Las tablas deben tener al menos 2 filas para calcular la suma.");
+                return;
+            }
+
+            var suma3 = 0;
+            var suma4 = 0;
+
+            for (var i = 1; i < filas3.length; i++) {
+                var valorCelda3 = parseFloat(filas3[i].querySelectorAll("td")[2].querySelector("input").value);
+                var valorCelda4 = parseFloat(filas4[i].querySelectorAll("td")[2].querySelector("input").value);
+
+                if (!isNaN(valorCelda3)) {
+                    suma3 += valorCelda3;
+                }
+
+                if (!isNaN(valorCelda4)) {
+                    suma4 += valorCelda4;
+                }
+            }
+
+            // Anotar la suma en la tabla5, columna 4, fila 4
+            var fila4Tabla5 = tabla5.querySelectorAll("tr")[4];
+            if (fila4Tabla5) {
+                fila4Tabla5.querySelectorAll("td")[3].querySelector("input").value = suma3 + suma4;
+            }
+        }
+        function calcularSumaColumna2Tabla5() {
+            var tabla5 = document.getElementById("tabla5");
+
+            if (!tabla5) {
+                console.error("La tabla 5 no se encontró.");
+                return;
+            }
+
+            var filas5 = tabla5.querySelectorAll("tr");
+
+            if (filas5.length < 2) {
+                console.error("La tabla 5 debe tener al menos 2 filas para calcular la suma.");
+                return;
+            }
+
+            var sumaColumna2 = 0;
+
+            for (var i = 1; i < filas5.length; i++) {
+                var valorCelda2 = parseFloat(filas5[i].querySelectorAll("td")[1].querySelector("input").value);
+
+                if (!isNaN(valorCelda2)) {
+                    sumaColumna2 += valorCelda2;
+                }
+            }
+
+            // Anotar la suma en la tabla5, columna 4, fila 4
+            var fila4Tabla5 = filas5[3];
+            if (fila4Tabla5) {
+                fila4Tabla5.querySelectorAll("td")[3].querySelector("input").value = sumaColumna2;
+            }
+        }
+        function sumarColumna4Tabla5() {
+            var tabla5 = document.getElementById("tabla5");
+
+            if (!tabla5) {
+                console.error("La tabla 5 no se encontró.");
+                return;
+            }
+
+            var filas5 = tabla5.querySelectorAll("tr");
+
+            if (filas5.length < 7) {
+                console.error("La tabla 5 debe tener al menos 7 filas para realizar la suma.");
+                return;
+            }
+
+            var sumaColumna4 = 0;
+
+            // Sumar los valores de la columna 4 desde la fila 1 hasta la fila 5
+            for (var i = 1; i <= 5; i++) {
+                var valorCelda4 = parseFloat(filas5[i].querySelectorAll("td")[3].querySelector("input").value);
+
+                if (!isNaN(valorCelda4)) {
+                    sumaColumna4 += valorCelda4;
+                }
+            }
+
+            // Anotar la suma en la tabla5, columna 4, fila 6
+            filas5[6].querySelectorAll("td")[3].querySelector("input").value = sumaColumna4;
+        }
+       
+        function calcularDiferencia() {
+    // Obtener los valores de la tabla 1
+    var tabla1 = document.getElementById("tabla1");
+    var filasTabla1 = tabla1.querySelectorAll("tr");
+
+    if (filasTabla1.length < 3) {
+        console.error("La tabla 1 debe tener al menos 3 filas.");
+        return;
+    }
+
+    // Obtener los valores de la tabla 2
+    var tabla2 = document.getElementById("tabla2");
+    var filasTabla2 = tabla2.querySelectorAll("tr");
+
+    // Verificar si hay al menos dos filas en la tabla 2
+    if (filasTabla2.length < 2) {
+        console.warn("La tabla 2 no tiene datos. Se asumirá que los valores son cero.");
+        // Puedes manejar este caso según tus necesidades. Aquí asumimos que los valores son cero.
+        var restarTabla2 = 0;
+    } else {
+        // Obtener los datos de la segunda fila de la tabla 2 (donde están los datos a restar)
+        var celda2Tabla2 = filasTabla2[1].querySelectorAll("td")[1];
+        var celda4Tabla2 = filasTabla2[1].querySelectorAll("td")[3];
+
+        // Verificar si hay al menos dos celdas en la segunda fila de la tabla 2
+        if (!celda2Tabla2 || !celda4Tabla2) {
+            console.error("La segunda fila de la tabla 2 debe tener al menos 2 celdas.");
+            return;
+        }
+
+        // Calcular la diferencia solo si hay valores definidos
+        var restarTabla2 = parseFloat(celda2Tabla2.querySelector("input").value) || 0;
+        restarTabla2 += parseFloat(celda4Tabla2.querySelector("input").value) || 0;
+    }
+
+    // Si hay valores en tabla1, asumir cero en caso de null o undefined
+    var totalTabla1 = 0;
+    for (var i = 1; i < filasTabla1.length; i++) {
+        var valorCelda1 = filasTabla1[i].querySelectorAll("td")[1].querySelector("input").value;
+        totalTabla1 += parseFloat(valorCelda1) || 0; // Si es null o undefined, asumir cero
+    }
+
+    var diferencia = totalTabla1 - restarTabla2;
+
+    // Anotar la diferencia en la tabla 5, columna 4, fila 7
+    var tabla5 = document.getElementById("tabla5");
+    var filasTabla5 = tabla5.querySelectorAll("tr");
+
+    if (filasTabla5.length < 8) {
+        console.error("La tabla 5 debe tener al menos 8 filas.");
+        return;
+    }
+
+    filasTabla5[7].querySelectorAll("td")[3].querySelector("input").value = isNaN(diferencia) ? 0 : diferencia;
+}
+function final() {
+    // Obtener los valores de la fila 6 y fila 7 de la tabla 5
+    var tabla5 = document.getElementById("tabla5");
+    var filasTabla5 = tabla5.querySelectorAll("tr");
+
+    if (filasTabla5.length < 8) {
+        console.error("La tabla 5 debe tener al menos 8 filas.");
+        return;
+    }
+
+    var valorFila6 = parseFloat(filasTabla5[6].querySelectorAll("td")[3].querySelector("input").value) || 0;
+    var valorFila7 = parseFloat(filasTabla5[7].querySelectorAll("td")[3].querySelector("input").value) || 0;
+
+    // Calcular la diferencia entre fila 6 y fila 7
+    var resultado = valorFila6 - valorFila7;
+
+    // Anotar el resultado en la fila 8
+    filasTabla5[8].querySelectorAll("td")[3].querySelector("input").value = isNaN(resultado) ? 0 : resultado;
+}
+
+
+
+        function realizarCalculos() {
+            calcularPromedio("tabla1", "promedio1");
+            calcularSumaColumna4();
+            calcularSumaColumna2Tabla5(); // Nueva llamada para sumar la columna 2 de la tabla 5
+            sumarColumna4Tabla5();
+            calcularDiferencia();
+            final();
+          
+            // ... otras llamadas que necesites hacer
+        }
+
+</script>
+</body>
+</html>
