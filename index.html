@@ -11,145 +11,90 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
     crossorigin="anonymous">
-<style> 
+    <style>
         .flex-table {
             display: flex;
+            flex-direction: column; /* Cambiado a columna */
             overflow-x: auto;
+            margin-top: 20px;
         }
-    body {
-        background-color: #007bff;
-        color: #ffffff;
-        font-family: Arial, sans-serif;
-        margin: 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        min-height: 100vh;
-    }
-    
-    .container {
-        background-color: #ffffff;
-        border-radius: 8px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        padding: 20px;
-        margin-top: 20px;
-        width: 80%;
-        display: flex;
-        flex-direction: column;
-    }
-    
-    h1, h2 {
-        color: #007bff;
-    }
-    
-    button {
-        background-color: #0056b3;
-        color: #ffffff;
-        padding: 10px 20px;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-        margin-top: 20px;
-        font-size: 16px;
-    }
-    
-    button:hover {
-        background-color: #004080;
-    }
-    
-    #fechaActual {
-        margin-top: 10px;
-        color: #007bff;
-    }
-    
-    .form-group {
-        margin-top: 10px;
-    }
-    
-    .logo-container {
-        margin-top: 20px;
-        align-self: flex-end;
-    }
-    
-    .logo {
-        width: 100px;
-        height: auto;
-    }
-    
-    /* Estilos para las tablas */
-    .table-container {
-        overflow-x: auto;
-        margin-top: 20px;
-    }
-    
-    table {
-        width: 100%;
-        border-collapse: collapse;
-        border-radius: 8px;
-        overflow: hidden;
-    }
-    
-    table, th, td {
-        border: 1px solid #007bff;
-    }
-    
-    th, td {
-        padding: 12px;
-        text-align: left;
-    }
-    
-    th {
-        background-color: #007bff;
-        color: #ffffff;
-    }
-    
-    .negro-texto {
-        color: #000000 !important;
-    }
-    
-    /* Estilos específicos para la quinta tabla */
-    #tabla5 th:nth-child(3) {
-        width: 30%;
-    }
-    
-    /* Estilos para la fecha */
-    #fechaActual {
-        margin-top: 10px;
-    }
-    
-    /* Estilos para los nuevos campos */
-    .form-group {
-        margin-top: 10px;
-        display: flex;
-        flex-direction: column;
-    }
-    
-    .form-group label {
-        margin-bottom: 5px;
-        text-align: left;
-    }
-    
-    .form-group input {
-        width: 100%;
-    }
-    
-    /* Estilos específicos para pantallas más pequeñas */
-    @media screen and (max-width: 600px) {
-        .container {
+
+        .table-container {
+            overflow-x: auto;
+            margin-bottom: 20px; /* Añadido margen inferior para separar las tablas */
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        table, th, td {
+            border: 1px solid #007bff;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #007bff;
+            color: #ffffff;
+        }
+
+        .negro-texto {
+            color: #000000 !important;
+        }
+
+        .form-group {
+            margin-top: 10px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            margin-bottom: 5px;
+            text-align: left;
+        }
+
+        .form-group input {
             width: 100%;
         }
-    
-        /* Ajusta el ancho de las celdas en tablas para pantallas más pequeñas */
-        table, th, td {
-            font-size: 12px;
+
+        @media screen and (max-width: 600px) {
+            .flex-table {
+                flex-direction: column;
+            }
+
+            .table-container {
+                margin-right: 0;
+                margin-bottom: 20px; /* Añadido margen inferior en pantallas pequeñas */
+            }
+
+            table, th, td {
+                font-size: 12px;
+            }
         }
-    
-        /* Ajusta el ancho de la tercera columna de la quinta tabla para pantallas más pequeñas */
-        #tabla5 th:nth-child(3) {
-            width: 40%;
-        }
-    }
-</style>    
+        button {
+    background-color: #0056b3;
+    color: #ffffff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 20px;
+    font-size: 16px;
+    margin-bottom: 20px; /* Añadido margen inferior para separar el botón de las tablas */
+}
+
+button:hover {
+    background-color: #004080;
+}
+
+    </style>
         
 </head>
 
@@ -176,9 +121,8 @@
             // Mostrar la fecha actual en el elemento con id "fechaActual"
             document.getElementById('fechaActual').innerHTML = 'Fecha: ' + getFormattedDate();
         </script>
-         <div class="flex-table"></div>
-        <!-- Nueva tabla para "Nombre y Apellido" y "Legajo" -->
-        <table>
+        <div class="flex-table">
+            <div class="table-container">
             <tr>
                 <th>Nombre y Apellido</th>
                 <th>Legajo</th>
@@ -188,7 +132,9 @@
                 <td><input type="number" id="legajo" name="legajo" required></td>
             </tr>
         </table>
+    </div>
 
+    <div class="table-container">
         <form id="rendicionForm">
             <!-- Primera tabla -->
             <table id="tabla1">
@@ -212,7 +158,9 @@
                 <td><input type="text" id="promedio2" name="promedio2" readonly></td>
             </tr>
         </table>
+    </div>
 
+    <div class="table-container">
         <!-- Segunda tabla -->
         <table id="tabla2">
             <tr>
@@ -228,6 +176,9 @@
                 <td><input type="number" id="totalNotasCredito" name="totalNotasCredito"   required></td>
             </tr>
         </table>
+    </div>
+
+    <div class="table-container">
                 <!-- Tercera tabla -->
 <table id="tabla3">
     <tr>
@@ -257,7 +208,9 @@
         <td><input type="number" id="totalModo3" name="totalModo3" required></td>
     </tr>
 </table>
+</div>
 
+<div class="table-container">
 <!-- Cuarta tabla -->
 <table id="tabla4">
     <tr>
@@ -286,7 +239,9 @@
         <td><input type="number" id="totalModo4" name="totalModo4" required></td>
     </tr>
 </table>
+</div>
 
+<div class="table-container">
 <!-- Quinta tabla -->
 <table id="tabla5">
     <tr>
