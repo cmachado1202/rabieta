@@ -12,6 +12,10 @@
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
     crossorigin="anonymous">
 <style> 
+        .flex-table {
+            display: flex;
+            overflow-x: auto;
+        }
     body {
         background-color: #007bff;
         color: #ffffff;
@@ -172,7 +176,7 @@
             // Mostrar la fecha actual en el elemento con id "fechaActual"
             document.getElementById('fechaActual').innerHTML = 'Fecha: ' + getFormattedDate();
         </script>
-
+         <div class="flex-table"></div>
         <!-- Nueva tabla para "Nombre y Apellido" y "Legajo" -->
         <table>
             <tr>
@@ -340,7 +344,7 @@
         <td><input type="number" id="totales" name="totales" readonly></td>
     </tr>
 </table>
-
+</div>
 
 
 <button type="button" onclick="realizarCalculos()">Realizar Cálculos</button>
