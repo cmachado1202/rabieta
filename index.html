@@ -11,137 +11,137 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
     crossorigin="anonymous">
-        <style>
-            body {
-                background-color: #007bff;
-                color: #ffffff;
-                font-family: Arial, sans-serif;
-                margin: 0;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                min-height: 100vh;
-            }
+<style>
+    body {
+        background-color: #007bff;
+        color: #ffffff;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+    }
     
-            .container {
-                background-color: #ffffff;
-                border-radius: 8px;
-                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-                padding: 20px;
-                margin-top: 20px;
-                width: 80%;
-                display: flex;
-                flex-direction: column;
-            }
-    
-            h1, h2 {
-                color: #007bff;
-            }
-    
-            button {
-                background-color: #0056b3;
-                color: #ffffff;
-                padding: 10px 20px;
-                border: none;
-                border-radius: 4px;
-                cursor: pointer;
-                margin-top: 20px;
-                font-size: 16px;
-            }
-    
-            button:hover {
-                background-color: #004080;
-            }
-    
-            #fechaActual {
-                margin-top: 10px;
-                color: #007bff;
-            }
-    
-            .form-group {
-                margin-top: 10px;
-            }
-    
-            .logo-container {
-                margin-top: 20px;
-                align-self: flex-end;
-            }
-    
-            .logo {
-                width: 100px;
-                height: auto;
-            }
-    
-            /* Estilos para las tablas */
-            table {
-                width: 100%;
-                margin-top: 20px;
-                border-collapse: collapse;
-                border-radius: 8px;
-                overflow: hidden;
-            }
-    
-            table, th, td {
-                border: 1px solid #007bff;
-            }
-    
-            th, td {
-                padding: 12px;
-                text-align: left;
-            }
-    
-            th {
-                background-color: #007bff;
-                color: #ffffff;
-            }
-    
-            .negro-texto {
-                color: #000000 !important;
-            }
-    
-            /* Estilos específicos para la quinta tabla */
-            #tabla5 th:nth-child(3) {
-                width: 30%;
-            }
-    
-            /* Estilos para la fecha */
-            #fechaActual {
-                margin-top: 10px;
-            }
-    
-            /* Estilos para los nuevos campos */
-            .form-group {
-                margin-top: 10px;
-                display: flex;
-                flex-direction: column;
-            }
-    
-            .form-group label {
-                margin-bottom: 5px;
-                text-align: left;
-            }
-    
-            .form-group input {
-                width: 100%;
-            }
-    
-            @media screen and (max-width: 600px) {
-    /* Estilos específicos para pantallas más pequeñas */
     .container {
-        width: 100%; /* Haz que el contenedor ocupe el 100% del ancho */
+        background-color: #ffffff;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        margin-top: 20px;
+        width: 80%;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    h1, h2 {
+        color: #007bff;
+    }
+    
+    button {
+        background-color: #0056b3;
+        color: #ffffff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        margin-top: 20px;
+        font-size: 16px;
+    }
+    
+    button:hover {
+        background-color: #004080;
+    }
+    
+    #fechaActual {
+        margin-top: 10px;
+        color: #007bff;
+    }
+    
+    .form-group {
+        margin-top: 10px;
+    }
+    
+    .logo-container {
+        margin-top: 20px;
+        align-self: flex-end;
+    }
+    
+    .logo {
+        width: 100px;
+        height: auto;
+    }
+    
+    /* Estilos para las tablas */
+    table {
+        width: 100%;
+        margin-top: 20px;
+        border-collapse: collapse;
+        border-radius: 8px;
+        overflow: hidden;
+    }
+    
+    table, th, td {
+        border: 1px solid #007bff;
+    }
+    
+    th, td {
+        padding: 12px;
+        text-align: left;
+    }
+    
+    th {
+        background-color: #007bff;
+        color: #ffffff;
+    }
+    
+    .negro-texto {
+        color: #000000 !important;
+    }
+    
+    /* Estilos específicos para la quinta tabla */
+    #tabla5 th:nth-child(3) {
+        width: 30%;
+    }
+    
+    /* Estilos para la fecha */
+    #fechaActual {
+        margin-top: 10px;
+    }
+    
+    /* Estilos para los nuevos campos */
+    .form-group {
+        margin-top: 10px;
+        display: flex;
+        flex-direction: column;
     }
     
     .form-group label {
-        width: 100%; /* Ajusta según el ancho deseado para la etiqueta en pantallas más pequeñas */
-        text-align: left; /* Alineado a la izquierda en pantallas más pequeñas */
         margin-bottom: 5px;
+        text-align: left;
     }
-
+    
     .form-group input {
-        width: 100%; /* Ajusta según el ancho deseado para el campo de entrada en pantallas más pequeñas */
+        width: 100%;
     }
-}
-        </style>
+    
+    /* Estilos específicos para pantallas más pequeñas */
+    @media screen and (max-width: 600px) {
+        .container {
+            width: 100%;
+        }
+    
+        /* Ajusta el ancho de las celdas en tablas para pantallas más pequeñas */
+        table, th, td {
+            font-size: 12px;
+        }
+    
+        /* Ajusta el ancho de la tercera columna de la quinta tabla para pantallas más pequeñas */
+        #tabla5 th:nth-child(3) {
+            width: 40%;
+        }
+    }
+</style>    
         
 </head>
 
