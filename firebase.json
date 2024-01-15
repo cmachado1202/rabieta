@@ -1,0 +1,9 @@
+{
+    "rules": {
+      "storage": {
+        ".read": "auth != null",
+        ".write": "auth != null"
+      }
+    }
+  }
+  
