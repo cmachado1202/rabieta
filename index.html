@@ -4,6 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+     
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js"></script>
+
+
+    <!-- Firebase -->
+    <!-- Firebase v8.9.1 que utiliza CommonJS -->
+    <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-storage.js"></script>
+
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
 
     <title>Formulario de Rendición</title>
     <!-- Bootstrap CSS -->
@@ -334,6 +344,63 @@
 
 
 <button type="button" onclick="realizarCalculos()">Realizar Cálculos</button>
+<script>
+    function generarPDF() {
+        // Crear instancia de jsPDF
+        const pdf = new jsPDF();
+
+        // Capturar el contenido visual de la página con html2canvas
+        html2canvas(document.body).then(canvas => {
+            // Convertir el canvas a Blob
+            const imgData = canvas.toDataURL('image/png');
+            const pdfBlob = dataURItoBlob(imgData);
+
+            // Generar nombre único para el archivo PDF
+            const nombreArchivo = `rendicion_${new Date().getTime()}.pdf`;
+
+            // Obtener referencia al servicio de almacenamiento de Firebase
+            const storage = firebase.storage();
+            const storageRef = storage.ref();
+
+            // Subir el Blob a Firebase Storage
+            storageRef.child(nombreArchivo).put(pdfBlob).then(snapshot => {
+                console.log("PDF subido correctamente:", snapshot);
+
+                // Obtener la URL de descarga del PDF
+                storageRef.child(nombreArchivo).getDownloadURL().then(url => {
+                    console.log("URL de descarga:", url);
+                    alert("PDF generado y guardado en Firebase con éxito. URL de descarga: " + url);
+
+                    // Abrir el diálogo de impresión
+                    window.print();
+                    limpiarCampos();    
+                }).catch(error => {
+                    console.error("Error al obtener la URL de descarga:", error);
+                });
+            }).catch(error => {
+                console.error("Error al subir el PDF a Firebase Storage:", error);
+            });
+        });
+    }
+
+    // Función para convertir data URI a Blob
+    function dataURItoBlob(dataURI) {
+        const byteString = atob(dataURI.split(',')[1]);
+        const ab = new ArrayBuffer(byteString.length);
+        const ia = new Uint8Array(ab);
+        for (let i = 0; i < byteString.length; i++) {
+            ia[i] = byteString.charCodeAt(i);
+        }
+        return new Blob([ab], { type: 'image/png' });
+    }
+    
+   
+</script>
+
+
+    
+<button type="button" onclick="generarPDF()">Imprimir</button>
+
 </form>
 </div>
 <script>
@@ -550,9 +617,37 @@ function final() {
             sumarColumna4Tabla5();
             calcularDiferencia();
             final();
-          
             // ... otras llamadas que necesites hacer
         }
+ 
+
+<!-- Configuración de Firebase -->
+ 
+  const firebaseConfig = {
+    apiKey: "AIzaSyCNQCuLg1f1qK-MFDt3lMwa3q1YRyZMYu8",
+    authDomain: "rendicion-4e38d.firebaseapp.com",
+    projectId: "rendicion-4e38d",
+    storageBucket: "rendicion-4e38d.appspot.com",
+    messagingSenderId: "755023359161",
+    appId: "1:755023359161:web:55b7da2a50c2ce1712bf68",
+    measurementId: "G-ZMCCX6XRXF"
+  };
+
+  // Inicializa Firebase
+  firebase.initializeApp(firebaseConfig);
+
+  // También podrías inicializar otras partes de Firebase si las necesitas, por ejemplo, Firebase Storage
+  // var storage = firebase.storage();
+ 
+  
+  function limpiarCampos() {
+        // Obtener todos los campos de las tablas (utilizando clases)
+        const camposTablas = document.querySelectorAll('.table-container input');
+
+        // Limpiar el valor de todos los campos
+        camposTablas.forEach(campo => campo.value = "");
+    }
+
 
 </script>
 
@@ -567,7 +662,9 @@ function final() {
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
+     
+
 
 </body>
-</body>
+ 
 </html>
