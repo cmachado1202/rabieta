@@ -168,6 +168,10 @@
         #tabla4 input[type="number"][id^="cantidad"] {
             max-width: 6em; /* Ajustar el ancho máximo según tus necesidades */
         }
+        #tabla3 input[type="number"][id^="total"]
+        #tabla4 input[type="number"][id^="total"] {
+            max-width: 10em; /* Ajustar el ancho máximo según tus necesidades */
+        }
         #tabla5-parte2 input#Gastos,
 #tabla5-parte2 input#mercadopago,
 #tabla5-parte2 input#cantidadtickets,
@@ -453,6 +457,7 @@
                     
                     
                     <button type="button" onclick="realizarCalculosParte2()">Realizar Cálculos</button>
+                    <button type="button" onclick="revisar()">Revisar</button>
 
 
                
@@ -461,6 +466,17 @@
         </div>
         
         <script>
+            function revisar() {
+        // Llama a la función para ir a la "Tabla 0"
+        irATabla0();
+    }
+
+    function irATabla0() {
+        // Implementa aquí la lógica para llevar al usuario a la "Tabla 0"
+        // Por ejemplo, puedes ocultar todas las tablas y mostrar solo la "Tabla 0"
+        ocultarTodasLasTablas();
+        mostrarTabla("tabla0", "table");
+    }
 function ocultarTabla(tablaId) {
     const tabla = document.getElementById(tablaId);
     if (tabla) {
