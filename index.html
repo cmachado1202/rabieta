@@ -21,137 +21,144 @@
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
         crossorigin="anonymous">
         <style>
-            body {
-                background-color: #007bff;
-                color: #ffffff;
-                font-family: Arial, sans-serif;
-                margin: 0;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                min-height: 100vh;
-            }
-        
+  body {
+            background-color: #007bff;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        h1, h2 {
+            color: #007bff;
+        }
+
+        button {
+            background-color: #0056b3;
+            color: #ffffff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #004080;
+        }
+
+        #fechaActual {
+            margin-top: 10px;
+        }
+
+        .form-group {
+            margin-top: 10px;
+        }
+
+        .form-group label {
+            margin-bottom: 5px;
+            text-align: left;
+        }
+
+        .form-group input {
+            width: 100%;
+        }
+
+        .logo-container {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .logo {
+            width: 100px;
+            height: auto;
+        }
+
+        .table-container {
+            overflow-x: auto;
+            margin-top: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+
+        table, th, td {
+            border: 1px solid #007bff;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #007bff;
+            color: #ffffff;
+        }
+
+        .negro-texto {
+            color: #000000 !important;
+        }
+
+        @media screen and (max-width: 600px) {
             .container {
-                background-color: #ffffff;
-                border-radius: 8px;
-                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-                padding: 20px;
-                margin-top: 20px;
-                width: 80%;
-                display: flex;
-                flex-direction: column;
+                padding: 10px;
             }
-        
-            h1, h2 {
-                color: #007bff;
-            }
-        
-            button {
-                background-color: #0056b3;
-                color: #ffffff;
-                padding: 10px 20px;
-                border: none;
-                border-radius: 4px;
-                cursor: pointer;
-                margin-top: 20px;
-                margin-bottom: 20px;
-                font-size: 16px;
-            }
-        
-            button:hover {
-                background-color: #004080;
-            }
-        
-            #fechaActual {
-                margin-top: 10px;
-            }
-        
-            .form-group {
-                margin-top: 10px;
-                display: flex;
-                flex-direction: column;
-            }
-        
-            .form-group label {
-                margin-bottom: 5px;
-                text-align: left;
-            }
-        
-            .form-group input {
-                width: 100%;
-            }
-        
+
             .logo-container {
-                margin-top: 20px;
-                align-self: flex-end;
+                margin-top: 10px;
             }
-        
-            .logo {
-                width: 100px;
-                height: auto;
-            }
-        
-            .table-container {
-                overflow-x: auto;
-                margin-top: 20px;
-                display: none; /* Ocultar todas las tablas por defecto */
-            }
-        
-            table {
-                width: 100%;
-                border-collapse: collapse;
-                border-radius: 8px;
-                overflow: hidden;
-                margin-bottom: 20px;
-            }
-        
+
             table, th, td {
-                border: 1px solid #007bff;
+                font-size: 12px;
             }
+
             .table-container {
-        display: none;
-    }
-
-    .table-container.active {
-        display: block;
-    }
-            th, td {
-                padding: 12px;
-                text-align: left;
+                display: block;
             }
-        
-            th {
-                background-color: #007bff;
-                color: #ffffff;
-            }
-        
-            .negro-texto {
-                color: #000000 !important;
-            }
-        
-            @media screen and (max-width: 600px) {
-                .container {
-                    width: 100%;
-                }
-        
-                table, th, td {
-                    font-size: 12px;
-                }
-        
-                .table-container {
-                    display: block; /* Mostrar tablas en pantallas pequeñas */
-                }
-            }
+        }
 
 
-#tabla5-parte2 tr.fila-visible {
+            #tabla5-parte2.mostrar-campos tr:not(.mostrar) {
+    display: none;
+}
+
+ 
+
+#tabla5-parte2.mostrar-completa table {
+    display: table;
+}
+
+#tabla5-parte2.mostrar-campos tr:not(.mostrar) {
+    display: none;
+}
+
+#tabla5-parte2.mostrar-completa tr {
     display: table-row;
 }
 
-        </style>
-      
+        #tabla3 input[type="number"][id^="cantidad"],
+        #tabla4 input[type="number"][id^="cantidad"] {
+            max-width: 4em; /* Ajustar el ancho máximo según tus necesidades */
+        }
 
+
+</style>
 
 </head>
 
@@ -178,7 +185,7 @@
         </script>
 <div class="container">
     <!-- Tabla 0 -->
-    <div id="tabla0" class="table-container active">
+    <div id="tabla0" class="table-responsive">
         <table>
             <tr>
                 <th>Nombre y Apellido</th>
@@ -193,7 +200,7 @@
     </div>
 
     <!-- Tabla 1 -->
-    <div id="tabla1" class="table-container">
+    <div id="tabla1" class="table-responsive">
         <table>
             <tr>
                 <th>Punto de Venta</th>
@@ -201,21 +208,22 @@
                 <th>Cantidad de Tickets</th>
             </tr>
             <tr>
-                <td><input type="text" id="puntoVenta1" name="puntoVenta1" required></td>
-                <td><input type="text" id="reporteFiscal1" name="reporteFiscal1" required></td>
-                <td><input type="number" id="cantidadTickets1" name="cantidadTickets1" required></td>
+                <td><input type="text" id="puntoVenta1" name="puntoVenta1" class="form-control input-sm" required></td>
+                <td><input type="text" id="reporteFiscal1" name="reporteFiscal1" class="form-control input-sm" required></td>
+                <td><input type="number" id="cantidadTickets1" name="cantidadTickets1" class="form-control" required></td>
             </tr>
             <tr>
-                <td><input type="text" id="puntoVenta2" name="puntoVenta2" required></td>
-                <td><input type="text" id="reporteFiscal2" name="reporteFiscal2" required></td>
-                <td><input type="number" id="cantidadTickets2" name="cantidadTickets2" required></td>
+                <td><input type="text" id="puntoVenta2" name="puntoVenta2" class="form-control input-sm" required></td>
+                <td><input type="text" id="reporteFiscal2" name="reporteFiscal2" class="form-control input-sm" required></td>
+                <td><input type="number" id="cantidadTickets2" name="cantidadTickets2" class="form-control" required></td>
             </tr>
         </table>
         <button type="button" onclick="mostrarSiguiente('tabla1', 'tabla2')">Siguiente</button>
     </div>
+    
 
     <!-- Tabla 2 -->
-    <div id="tabla2" class="table-container">
+    <div id="tabla2" class="table-responsive">
         <form id="rendicionForm2">
             <!-- Primera tabla -->
             <table>
@@ -247,7 +255,7 @@
     
 
     <!-- Tabla 3 -->
-    <div id="tabla3" class="table-container">
+    <div id="tabla3" class="table-responsive">
         <form id="rendicionForm3">
             <table>
                 <tr>
@@ -285,7 +293,7 @@
 
         
             <!-- Tabla 4 -->
-            <div id="tabla4" class="table-container">
+            <div id="tabla4" class="table-responsive">
                 <form id="rendicionForm4">
                     <table>
                         <tr>
@@ -319,7 +327,7 @@
             </div>
         
             <!-- Tabla 5 (dividida en dos partes) - Parte 1 -->
-            <div id="tabla5-parte1" class="table-container">
+            <div id="tabla5-parte1" class="table-responsive">
                 <form id="rendicionForm5-parte1">
                     <table>
                         <tr>
@@ -364,49 +372,52 @@
             </div>
         
             <!-- Tabla 5 (dividida en dos partes) - Parte 2 -->
-            <div id="tabla5-parte2" class="table-container">
+            <!-- Agrega la clase "mostrar-campos" al cargar la página -->
+            <div id="tabla5-parte2" class="table-responsive">
+ 
+
                 <form id="rendicionForm5-parte2">
                     <table>
-                        <tr>
+                        <tr class="ocultar">
                             <td><input type="text" value="Gastos" readonly></td>
                             <td><input type="number" id="Gastos" name="Gastos" readonly></td>
                         </tr>
-                        <tr>
+                        <tr class="mostrar">
                             <td><input type="text" value="Mercadopago" readonly></td>
                             <td><input type="number" id="mercadopago" name="mercadopago" required></td>
                         </tr>
 
 
-                        <tr>
+                        <tr class="ocultar">
                             <td><input type="text" value="Cantidad de ticktes" readonly></td>
                             <td><input type="number" id="cantidadtickets" name="cantidadtickets" readonly></td>
                         </tr>
-                        <tr>
+                        <tr class="ocultar">
                             <td><input type="text" value="Promedio de tickets" readonly></td>
                             <td><input type="number" id="promediodetickets" name="promediodetickets" readonly></td>
                         </tr>
-                        <tr>
+                        <tr class="ocultar">
                             <td><input type="text" value="total Tarjeta" readonly></td>
-                            <td><input type="number" id="totalterjeta" name="totaltarjeta" readonly></td>
+                            <td><input type="number" id="totaltarjeta" name="totaltarjeta" readonly></td>
                         </tr>
-                        <tr>
+                        <tr class="mostrar">
                             <td><input type="text" value="Efectivo final" readonly></td>
                             <td><input type="number" id="efectivoFinal" name="efectivoFinal" required></td>
                         </tr>
 
-                        <tr>
+                        <tr class="mostrar">
                             <td><input type="text" value="Fudex" readonly></td>
                             <td><input type="number" id="fudex" name="fudex" required></td>
                         </tr>
-                        <tr>
+                        <tr class="ocultar">
                             <td><input type="text" value="Monto a Rendir" readonly></td>
                             <td><input type="number" id="montorendir" name="montorendir" readonly></td>
                         </tr>
-                        <tr>
+                        <tr class="ocultar">
                             <td><input type="text" value="Total de rendición" readonly></td>
                             <td><input type="number" id="totalRendicion" name="totalRendicion" readonly></td>
                         </tr>
-                        <tr>
+                        <tr class="ocultar">
                             <td><input type="text" value="Diferencia" readonly></td>
                             <td><input type="number" id="totales" name="totales" readonly></td>
                         </tr>
@@ -414,27 +425,69 @@
                     
                     
                     
-                    <button type="button" onclick="realizarCalculos()">Realizar Cálculos</button>
+                    <button type="button" onclick="realizarCalculosParte2()">Realizar Cálculos</button>
+
+
                
                 </form>
             </div>
         </div>
         
         <script>
-            function mostrarSiguiente(tablaActual, tablaSiguiente) {
-                // Oculta la tabla actual
-                document.getElementById(tablaActual).style.display = 'none';
+function ocultarTabla(tablaId) {
+    const tabla = document.getElementById(tablaId);
+    if (tabla) {
+        tabla.style.display = 'none';
+    }
+}
 
-                // Muestra la siguiente tabla
-                document.getElementById(tablaSiguiente).style.display = 'block';
-            }
+function mostrarTabla(tablaId, displayValue = 'table') {
+    const tabla = document.getElementById(tablaId);
+    if (tabla) {
+        tabla.style.display = displayValue;
+    }
+}
 
-            function ocultarTabla(tablaId) {
-                const tabla = document.getElementById(tablaId);
-                if (tabla) {
-                    tabla.style.display = 'none';
-                }
-            }
+function ocultarTodasLasTablas() {
+    ocultarTabla("tabla1");
+    ocultarTabla("tabla2");
+    ocultarTabla("tabla3");
+    ocultarTabla("tabla4");
+    ocultarTabla("tabla5-parte1");
+    ocultarTabla("tabla5-parte2");
+}
+
+function mostrarSiguiente(tablaActual, tablaSiguiente) {
+    ocultarTabla(tablaActual);
+    mostrarTabla(tablaSiguiente);
+}
+
+function mostrarCamposMostrarTabla5Parte2() {
+    var tabla5Parte2 = document.getElementById("tabla5-parte2");
+    tabla5Parte2.classList.add("mostrar-campos");
+    tabla5Parte2.classList.remove("mostrar-completa");
+}
+
+function mostrarTablaCompletaParte2() {
+    var tabla5Parte2 = document.getElementById("tabla5-parte2");
+    tabla5Parte2.classList.remove("mostrar-campos");
+    tabla5Parte2.classList.add("mostrar-completa");
+}
+
+// Oculta todas las tablas al cargar la página
+ocultarTodasLasTablas();
+
+// Llama a la función al cargar la página
+document.addEventListener("DOMContentLoaded", function () {
+    ocultarTodasLasTablas();
+    mostrarCamposMostrarTabla5Parte2();
+});
+
+// Resto de tu código...
+// ...
+
+
+//////////////////////////////////////////////////////////////
             function generarPDF() {
                 // Crear instancia de jsPDF
                 const pdf = new jsPDF();
@@ -540,39 +593,10 @@
         console.error(error.message);
     }
 }
-// Supongamos que hay una variable "mostrarFilas" que contiene un arreglo con los índices de las filas que deben mostrarse
-var mostrarFilas = [0, 3, 4];  // Ejemplo
-
-function mostrarFilasTabla5Parte2() {
-    var tabla5Parte2 = document.getElementById("tabla5-parte2");
-    var filas = tabla5Parte2.querySelectorAll("tr");
-
-    // Oculta todas las filas
-    filas.forEach(function (fila) {
-        fila.classList.remove("mostrar");
-        fila.classList.add("ocultar");
-    });
-
-    // Muestra solo las filas específicas
-    mostrarFilas.forEach(function (indice) {
-        if (filas[indice]) {
-            filas[indice].classList.remove("ocultar");
-            filas[indice].classList.add("mostrar");
-        }
-    });
-}
-
-// Llama a esta función cuando sea necesario mostrar las filas específicas
-
-
-
-
-
-
 
 
         
-            function calcularSumaColumna4() {
+    function calcularSumaColumna4() {
     var tabla3 = document.getElementById("tabla3");
     var tabla4 = document.getElementById("tabla4");
     var tabla5Parte2 = document.getElementById("tabla5-parte2");
@@ -777,36 +801,41 @@ function final() {
 
 
 
-
-    function mostrarTabla(tablaId) {
-        const tabla = document.getElementById(tablaId);
-        if (tabla) {
-            tabla.style.display = 'block';
-        }
-    }
-
-    function realizarCalculos() {
-        mostrarFilasTabla5Parte2();
-        calcularPromedio("tabla1", "promedio1");
-        calcularSumaColumna4();
-        calcularSumaColumna2Tabla5();
-        sumarFilasTabla5Parte2();
-        calcularDiferencia();
-        final();
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Función para mostrar solo los campos con la clase "mostrar" al presentar la última tabla (Parte 2)
 
 
-    }
+// Función principal para realizar cálculos y mostrar la tabla (Parte 2)
+function realizarCalculosParte2() {
+    // Realizar los cálculos
+    calcularPromedio("tabla1", "promedio1");
+    calcularSumaColumna4();
+    calcularSumaColumna2Tabla5();
+    sumarFilasTabla5Parte2();
+    calcularDiferencia();
+    final();
+
+    // Obtener el elemento de la tabla 5 parte 2
+    var tabla5Parte2 = document.getElementById("tabla5-parte2");
+
+    // Mostrar la tabla completa
+    tabla5Parte2.classList.add("mostrar-completa");
+    tabla5Parte2.classList.remove("mostrar-campos");
+
+    // Añadir mensajes de consola para depurar
+    console.log("Cálculos realizados correctamente.");
+    console.log("Tabla 5 parte 2 debería mostrarse completa.");
+}
 
 
-        // Ocultar tablas después de realizar los cálculos
-        ocultarTabla("tabla1");
-        ocultarTabla("tabla2");
-        ocultarTabla("tabla3");
-        ocultarTabla("tabla4");
-        ocultarTabla("tabla5-parte1");
-        ocultarTabla("tabla5-parte2");
-    
 
+
+
+
+
+
+
+ 
          
         
         <!-- Configuración de Firebase -->
