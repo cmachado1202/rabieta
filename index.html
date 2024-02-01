@@ -551,56 +551,76 @@ document.addEventListener("DOMContentLoaded", function () {
 async function generarPDF() {
     const tablas = document.querySelectorAll('.table-responsive');
 
+    // Mostrar todas las tablas temporalmente
     tablas.forEach(tabla => {
-        // Eliminar estilos y clases de las tablas
-        tabla.removeAttribute('style');
-        tabla.removeAttribute('class');
+        tabla.style.display = 'table';
     });
 
-    // Obtener el contenido HTML sin estilos
-    const content = Array.from(tablas).map(tabla => {
-        const tablaSinEstilos = tabla.cloneNode(true);
-        tablaSinEstilos.querySelectorAll('*').forEach(el => {
-            el.removeAttribute('style');
-            el.removeAttribute('class');
-        });
-        return tablaSinEstilos.outerHTML;
-    }).join('');
-
     try {
+        // Abrir la ventana de impresión antes de generar el PDF
+        window.print();
+
+        // Crear un contenedor div para todas las tablas
+        const contenedor = document.createElement('div');
+
+        tablas.forEach((tabla, index) => {
+           // Clonar las tablas y aplicar estilos para impresión
+const tablaImpresion = tabla.cloneNode(true);
+
+// Eliminar clases de Bootstrap y estilos inline
+tablaImpresion.querySelectorAll('*').forEach(el => {
+    el.removeAttribute('class');
+    el.removeAttribute('style');
+});
+
+// Aplicar estilos específicos para la impresión
+tablaImpresion.style.borderCollapse = 'collapse';
+tablaImpresion.style.width = '100%';
+tablaImpresion.style.border = '1px solid #000';
+tablaImpresion.style.pageBreakInside = 'avoid'; // Evitar que las tablas se dividan en varias páginas
+
+            // Agregar un estilo adicional para la vista previa de impresión
+            const estiloImpresion = document.createElement('style');
+            estiloImpresion.innerHTML = `
+                @media print {
+                    .table-responsive {
+                        border-collapse: collapse;
+                        width: 100%;
+                        border: 1px solid #000;
+                    }
+                }
+            `;
+            tablaImpresion.appendChild(estiloImpresion);
+
+            contenedor.appendChild(tablaImpresion);
+        });
+
         // Utilizar html2pdf correctamente
-        const pdfBlob = await html2pdf().from(content).outputPdf('blob');
+        const pdfBlob = await html2pdf().from(contenedor).outputPdf('blob');
 
         const nombreArchivo = `documento_${new Date().getTime()}.pdf`;
         const storage = firebase.storage();
         const storageRef = storage.ref();
 
-        // Crear un ArrayBuffer a partir del Blob
-        const arrayBuffer = await pdfBlob.arrayBuffer();
-
-        // Crear un nuevo Blob desde el ArrayBuffer
-        const nuevoBlob = new Blob([arrayBuffer], { type: 'application/pdf' });
-
         // Subir el nuevo blob a Firebase Storage
-        const snapshot = await storageRef.child(nombreArchivo).put(nuevoBlob);
+        const snapshot = await storageRef.child(nombreArchivo).put(pdfBlob);
 
         // Obtener la URL de descarga del PDF en Firebase
         const url = await snapshot.ref.getDownloadURL();
 
-        window.print();
+        // Ocultar todas las tablas nuevamente
+        tablas.forEach(tabla => {
+            tabla.style.display = 'none';
+        });
 
-        alert("PDF generado y guardado en Firebase con éxito. URL de descarga: " + url);
-
+        // Realizar la recarga de la página después de realizar todas las acciones
         location.reload();
     } catch (error) {
         console.error("Error al generar o guardar el PDF:", error);
     }
-
-    // Restaurar los estilos originales
-    tablas.forEach(tabla => {
-        tabla.style.display = 'table';
-    });
 }
+
+
 
 
 
