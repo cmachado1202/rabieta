@@ -552,10 +552,20 @@ async function generarPDF() {
     const tablas = document.querySelectorAll('.table-responsive');
 
     tablas.forEach(tabla => {
-        tabla.style.display = 'table';
+        // Eliminar estilos y clases de las tablas
+        tabla.removeAttribute('style');
+        tabla.removeAttribute('class');
     });
 
-    const content = Array.from(tablas).map(tabla => tabla.outerHTML).join('');
+    // Obtener el contenido HTML sin estilos
+    const content = Array.from(tablas).map(tabla => {
+        const tablaSinEstilos = tabla.cloneNode(true);
+        tablaSinEstilos.querySelectorAll('*').forEach(el => {
+            el.removeAttribute('style');
+            el.removeAttribute('class');
+        });
+        return tablaSinEstilos.outerHTML;
+    }).join('');
 
     try {
         // Utilizar html2pdf correctamente
@@ -586,8 +596,9 @@ async function generarPDF() {
         console.error("Error al generar o guardar el PDF:", error);
     }
 
+    // Restaurar los estilos originales
     tablas.forEach(tabla => {
-        tabla.style.display = 'none';
+        tabla.style.display = 'table';
     });
 }
 
